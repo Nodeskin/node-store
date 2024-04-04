@@ -1,8 +1,5 @@
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 import Diretory from "../../components/directory/diretory.component";
-
-//Outlet allows us to leverage the pattern matching in the nesting structure 
-//in other to dynamically change portion of our codes based on the routes and nested route
 
 const Home = () => {
   const categories = [
@@ -34,8 +31,8 @@ const Home = () => {
   ];
   return (
     <div>
-    <Diretory categories = {categories} />
-    <Outlet/>
+      <Diretory categories={categories} />
+      {/* <Outlet /> */}
     </div>
   );
 };
