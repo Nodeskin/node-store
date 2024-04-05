@@ -1,4 +1,3 @@
-// import { Outlet } from "react-router-dom";
 import Diretory from "../../components/directory/diretory.component";
 
 const Home = () => {
@@ -32,7 +31,7 @@ const Home = () => {
   return (
     <div>
       <Diretory categories={categories} />
-      {/* <Outlet /> */}
+     
     </div>
   );
 };
