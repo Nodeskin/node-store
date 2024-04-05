@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+FIREBASE is a comprehensive platform for building web and mobile applications developed by Google. It offers a wide range of tools and services that developers can use to develop high-quality applications more efficiently and effectively.
+Here's a breakdown of what Firebase does:
+Realtime Database: Firebase provides a cloud-hosted NoSQL database that allows developers to store and sync data in real-time across multiple clients. This is particularly useful for applications requiring real-time updates, such as chat apps or collaborative tools.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Firebase allows for google sign in
 
-## Available Scripts
+After creating a firebase account at firebase.google.com
 
-In the project directory, you can run:
+inside the vsCode terminal use yarn add firebase to install the firebase library.
 
-### `npm start`
+ create util folder and inside create a firebase folder to host your firebase.js file
+then import the initialize app in the firebase.js file
+import {initializeApp} from 'firebase/app';
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Next you return to your firebase web account and click on the web logo to access the configuration codes;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyABtaL-zR3eygrF2G-hhGagjZd9hvG6Coc",
+  authDomain: "nodeskin-clothing.firebaseapp.com",
+  projectId: "nodeskin-clothing",
+  storageBucket: "nodeskin-clothing.appspot.com",
+  messagingSenderId: "926290460343",
+  appId: "1:926290460343:web:4dec3372241a1b0796d732"
+};
 
-### `npm test`
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 
