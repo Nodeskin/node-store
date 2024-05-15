@@ -25,7 +25,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+This firebaseApp instance will e use to carry out all of our CRUD actions.
+
+
 
 
  
