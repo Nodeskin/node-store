@@ -5,6 +5,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
 
 //initialize app function creates an app instance base of an app config
 // Your web app's Firebase configuration
@@ -21,11 +23,41 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 //Note setCustomParameters is just some custom required configuration that google needs
-const provider =  new GoogleAuthProvider();
+//SIGN-IN SECTION
+const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
-prompt: "select_account" 
-})
+  prompt: "select_account",
+});
+//We can have multiple GoogleAuthProvider, getAuth on the other hand we can only need one.
+export const auth = getAuth();
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
-export const auth = getAuth()
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 
+//DATABASE SECTION
+export const db = getFirestore();
+export const createUserDocumentFromAuth = async (userAuth) => {
+const userDocRef = doc(db, "users", userAuth.uid);
+
+  console.log(userDocRef);
+  const userSnapshot = await getDoc(userDocRef);
+  console.log(userSnapshot);
+  console.log(userSnapshot.exists());
+
+
+if(!userSnapshot.exists()){
+  const {displayName, email} = userAuth;
+  const createAt = new Date();
+
+  try{
+    await setDoc(userDocRef,{
+      displayName,
+      email,
+      createAt
+    } );
+  }
+  catch(error){
+    console.log('error creating the user', error.message)
+  }
+}
+return userDocRef
+};
