@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.util";
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.util";
 import FormInput from "../form-input/form-input.component";
-import './sign-up-form.styles.scss'
+import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
 
 const defaultFormFields = {
@@ -15,29 +18,31 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handleSubmit = async(event) =>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password!== confirmPassword) {
-      alert("Password does not match") 
-      return
+    if (password !== confirmPassword) {
+      alert("Password does not match");
+      return;
     }
 
-    try{
-      const {user} = await createAuthUserWithEmailAndPassword(email, password);
-      await createUserDocumentFromAuth(user, {displayName});
-
-    } catch(error){
-      if (error.code === 'auth/email-already-in-use'){
-        alert('cannnot create user, email already in use')
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserDocumentFromAuth(user, { displayName });
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("cannnot create user, email already in use");
+      } else {
+        console.log("user creation encountered an error", error);
       }
-      else {console.log('user creation encountered an error', error)}
     }
-    
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormFields({...formFields, [name]: value})
+    setFormFields({ ...formFields, [name]: value });
   };
   return (
     <div className="sign-up-container">
@@ -46,7 +51,7 @@ const SignUpForm = () => {
 
       <form onSubmit={handleSubmit}>
         <FormInput
-        label="DisplayName"
+          label="DisplayName"
           type="text"
           required
           onChange={handleChange}
@@ -64,7 +69,7 @@ const SignUpForm = () => {
         />
 
         <FormInput
-        label="Password"
+          label="Password"
           type="password"
           required
           onChange={handleChange}
@@ -72,9 +77,8 @@ const SignUpForm = () => {
           value={password}
         />
 
-        
         <FormInput
-        label="Confirm Password"
+          label="Confirm Password"
           type="password"
           required
           onChange={handleChange}
