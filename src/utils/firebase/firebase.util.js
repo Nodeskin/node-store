@@ -46,7 +46,7 @@ const userDocRef = doc(db, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
   // console.log(userSnapshot);
-  console.log(userSnapshot.exists());
+  // console.log(userSnapshot.exists());
 
 
 if(!userSnapshot.exists()){
@@ -76,5 +76,5 @@ export const createAuthUserWithEmailAndPassword = async(email, password)=>{
 export const signInAuthUserWithEmailAndPassword = async(email, password)=>{
   if(!email || !password) return;
   
-  return await createUserWithEmailAndPassword(auth, email, password)
+  return await signInWithEmailAndPassword(auth, email, password)
 }
