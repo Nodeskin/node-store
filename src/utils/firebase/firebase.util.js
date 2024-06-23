@@ -4,7 +4,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
+  
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -26,20 +28,21 @@ const firebaseApp = initializeApp(firebaseConfig);
 //Note setCustomParameters is just some custom required configuration that google needs
 //SIGN-IN SECTION
 const googleprovider = new GoogleAuthProvider();
+// console.log(googleprovider)
+
 googleprovider.setCustomParameters({
   prompt: "select_account",
 });
 //We can have multiple GoogleAuthProvider, getAuth on the other hand we can only need one.
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleprovider);
-
+// console.log(auth)
 
 //DATABASE SECTION
 export const db = getFirestore();
 export const createUserDocumentFromAuth = async (
   userAuth, 
-  additionalInformation
-  
+  additionalInformation 
 ) => {
 const userDocRef = doc(db, "users", userAuth.uid);
   // console.log(userDocRef);
@@ -78,3 +81,5 @@ export const signInAuthUserWithEmailAndPassword = async(email, password)=>{
   
   return await signInWithEmailAndPassword(auth, email, password)
 }
+
+export const signOutUser = async() => await signOut(auth)
