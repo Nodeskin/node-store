@@ -37,6 +37,7 @@ const SignInForm = () => {
         email,
         password
       );
+      // console.log(user)
       setCurrentUser(user)
 
       resetFormFields(formFields);
