@@ -3,13 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./routes/navigation/navigation.component";
 // import SignIn from "./routes/sign-in/sign-in.components";
 import Authentication from "./routes/authetnication/authentication.components";
-
+import Shop from "./routes/shop/shop.component";
 //Routes allow the app to register the route level components that
 // will then render the component that matches the specific component
 
-const Shop = () => {
-  return <h2>I AM SHOP COMP</h2>;
-};
 
 const App = () => {
   return (
